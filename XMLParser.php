@@ -35,7 +35,6 @@ $print_rArray = array();
 $dir = 'C:\Users\menth\Desktop\XML Files';
 $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir), RecursiveIteratorIterator::SELF_FIRST );
 
-
 libxml_use_internal_errors(true);
 
 foreach ($iterator as $path)
@@ -54,7 +53,6 @@ foreach ($iterator as $path)
                 $test = new monsterHunter($simplexml);
                 print 'about to push <br>';
                 array_push($print_rArray,$test->beginTheInquisition());
-
             }
             catch (Exception $e)
             {
