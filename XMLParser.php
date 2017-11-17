@@ -51,7 +51,6 @@ foreach ($iterator as $path)
             {
                 $simplexml = new SimpleXMLElement($path, 0, TRUE);
                 $test = new monsterHunter($simplexml);
-                print 'about to push <br>';
                 array_push($print_rArray,$test->beginTheInquisition());
             }
             catch (Exception $e)
