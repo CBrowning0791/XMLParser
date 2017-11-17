@@ -32,7 +32,7 @@ class monsterHunter
 $xmlDoc = new DOMDocument();
 $errorArray = array();
 $print_rArray = array();
-$dir = getcwd();
+$dir = 'C:\Users\menth\Desktop\XML Files';
 $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir), RecursiveIteratorIterator::SELF_FIRST );
 
 
@@ -40,34 +40,33 @@ libxml_use_internal_errors(true);
 
 foreach ($iterator as $path)
 {
-    if ($path->isDir())
+    if (pathinfo($path,PATHINFO_EXTENSION) == 'xml')
     {
-        //Do nothing this is just for safety so I don't try to pass a whole directory to my simplexml
-    }
-    else
-    {
-        try
+        if ($path->isDir())
         {
-            $simplexml = new SimpleXMLElement($path, 0, TRUE);
-            $test = new monsterHunter($simplexml);
-            array_push($print_rArray,$test->beginTheInquisition());
-
+            //Do nothing this is just for safety so I don't try to pass a whole directory to my simplexml
         }
-        catch (Exception $e)
+        else
         {
-            if(strpos($path,'XMLParser') === FALSE)
+            try
             {
-                array_push($errorArray, $path);
+                $simplexml = new SimpleXMLElement($path, 0, TRUE);
+                $test = new monsterHunter($simplexml);
+                print 'about to push <br>';
+                array_push($print_rArray,$test->beginTheInquisition());
+
+            }
+            catch (Exception $e)
+            {
+                array_push($errorArray,$path);
             }
         }
     }
 }
+print 'I opened ' . count($print_rArray) . ' files.<br>';
 print 'Something went wrong when trying to access the following files.<br>';
 foreach ($errorArray as $item)
 {
     print $item . '<br>';
 }
-
-
-
 ?>
