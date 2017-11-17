@@ -11,7 +11,6 @@ class monsterHunter
     function beginTheInquisition()
     {
         $this->theHunt($this->rootNode);
-        //print count($this->array);
         return $this->array;
     }
     function theHunt($node)
@@ -32,8 +31,7 @@ class monsterHunter
 $xmlDoc = new DOMDocument();
 $errorArray = array();
 $print_rArray = array();
-$dir = getcwd();
-$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir), RecursiveIteratorIterator::SELF_FIRST );
+$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(getcwd()), RecursiveIteratorIterator::SELF_FIRST );
 
 libxml_use_internal_errors(true);
 
