@@ -41,12 +41,6 @@ foreach ($iterator as $path)
 {
     if (pathinfo($path,PATHINFO_EXTENSION) == 'xml')
     {
-        if ($path->isDir())
-        {
-            //Do nothing this is just for safety so I don't try to pass a whole directory to my simplexml
-        }
-        else
-        {
             try
             {
                 $simplexml = new SimpleXMLElement($path, 0, TRUE);
@@ -57,7 +51,6 @@ foreach ($iterator as $path)
             {
                 array_push($errorArray,$path);
             }
-        }
     }
 }
 print 'I opened ' . count($print_rArray) . ' files.<br>';
