@@ -32,7 +32,7 @@ class monsterHunter
 $xmlDoc = new DOMDocument();
 $errorArray = array();
 $print_rArray = array();
-$dir = 'C:\Users\menth\Desktop\XML Files';
+$dir = getcwd();
 $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir), RecursiveIteratorIterator::SELF_FIRST );
 
 libxml_use_internal_errors(true);
